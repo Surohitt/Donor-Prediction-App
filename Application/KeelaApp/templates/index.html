@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Income Classifier</title>
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<style type="text/css">
+
+/* Background color gradient styling*/
+body{
+	background: linear-gradient(to top,#1ca2ed 0%, #AEE4FF 50%);
+}
+.form-style-10{
+	width:450px;
+	padding:30px;
+	margin:40px auto;
+	background: #FFF;
+	border-radius: 10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+}
+
+/* Background styling for each form subsection */
+.form-style-10 .inner-wrap{
+	padding: 30px;
+	background: #F2F7F9;
+	border-radius: 6px;
+	margin-bottom: 15px;
+}
+/* Header styling */
+
+.form-style-10 h1{
+	background: #2A88AD;
+	padding: 20px 30px 15px 30px;
+	margin: -30px -30px 30px -30px;
+	border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 30px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+}
+.form-style-10 h1 > span{
+	display: block;
+	margin-top: 2px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-10 label{
+	display: block;
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #888;
+	margin-bottom: 15px;
+}
+
+.form-style-10 input[type="text"],
+.form-style-10 textarea,
+.form-style-10 select {
+	display: block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 8px;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border: 2px solid #fff;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+/* Coloring for text! */
+.form-style-10 .section{
+	font: normal 20px 'Bitter', serif;
+	color: #2A88AD;
+	margin-bottom: 5px;
+}
+.form-style-10 .section span {
+	background: #2A88AD;
+	padding: 5px 10px 5px 10px;
+	position: absolute;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border: 4px solid #fff;
+	font-size: 14px;
+	margin-left: -45px;
+	color: #fff;
+	margin-top: -3px;
+}
+/* Boiler plate button styling with unique background for Keela */
+.form-style-10 input[type="button"],
+.form-style-10 input[type="submit"]{
+	background: #FCAC01;
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 30px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+	font-size: 15px;
+}
+/* However color change functionality */
+.form-style-10 input[type="button"]:hover,
+.form-style-10 input[type="submit"]:hover{
+	background: #FF0400;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+}
+.form-style-10 .privacy-policy{
+	float: right;
+	width: 250px;
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #4D4D4D;
+	margin-top: 10px;
+	text-align: right;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-style-10">
+<h1><center>Donor Prediction <img src="{{url_for('static', filename = 'keela.png')}}"
+    style="max-width:150px; max-height: 30px; margin-left: auto;"
+    alt="check_mark rounded"></center><span><center>Analyze Donor Characteristics
+    and Predict Their Income!</span></center></h1>
+<form action="/result" method="POST">
+    <div class="section"><span>1</span>Personal Information</div>
+    <div class="inner-wrap">
+        <label for="workclass">Working Class</label>
+        <select id="workclass" name="workclass">
+            <option value="Federal-gov">Federal-gov</option>
+            <option value="Local-gov">Local-gov</option>
+            <option value="Never-worked">Never-worked</option>
+            <option value="Private">Private</option>
+            <option value="Self-emp-inc">Self-emp-inc</option>
+            <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+            <option value="State-gov">State-gov</option>
+            <option value="Without-pay">Without-pay</option>
+        </select>
+        <br>
+        <label for="education">Education</label>
+        <select id="education" name="education">
+            <option value="10th">10th</option>
+            <option value="11th">11th</option>
+            <option value="12th">12th</option>
+            <option value="1st-4th">1st-4th</option>
+            <option value="5th-6th">5th-6th</option>
+            <option value="7th-8th">7th-8th</option>
+            <option value="9th">9th</option>
+            <option value="Assoc-acdm">Assoc-acdm</option>
+            <option value="Assoc-voc">Assoc-voc</option>
+            <option value="Bachelors">Bachelors</option>
+            <option value="Doctorate">Doctorate</option>
+            <option value="HS-grad">HS-grad</option>
+            <option value="Masters">Masters</option>
+            <option value="Preschool">Preschool</option>
+            <option value="Prof-school">Prof-school</option>
+            <option value="Some-college">Some-college</option>
+        </select>
+        <br>
+        <label for="occupation">Occupation</label>
+        <select id="occupation" name="occupation">
+            <option value="Adm-clerical">Adm-clerical</option>
+            <option value="Armed-Forces">Armed-Forces</option>
+            <option value="Craft-repair">Craft-repair</option>
+            <option value="Exec-managerial">Exec-managerial</option>
+            <option value="Farming-fishing">Farming-fishing</option>
+            <option value="Handlers-cleaners">Handlers-cleaners</option>
+            <option value="Machine-op-inspct">Machine-op-inspct</option>
+            <option value="Other-service">Other-service</option>
+            <option value="Priv-house-serv">Priv-house-serv</option>
+            <option value="Prof-specialty">Prof-specialty</option>
+            <option value="Protective-serv">Protective-serv</option>
+            <option value="Sales">Sales</option>
+            <option value="Tech-support">Tech-support</option>
+            <option value="Transport-moving">Transport-moving</option>
+        </select>
+        <br>
+        <label for="education_years">Number of years of Education</label>
+        <input type="text" id="education_years" name="education_years" placeholder="Numerical Input between 1 and 16">
+        <br>
+        <label for="hours_worked_per_week">Hours per Week Worked</label>
+        <input type="text" id="hours_worked_per_week" name="hours_worked_per_week" placeholder="Numerical Input between 1 and 99">
+    </div>
+
+    <div class="section"><span>2</span>Personal Information</div>
+    <div class="inner-wrap">
+        <label for="age">Age</label>
+        <input type="text" id="age"  name="age" placeholder="Numerical Input between 17 and 90">
+        <br>
+        <label for="relationship">Relationship</label>
+        <select id="relationship" name="relationship" >
+            <option value="Unmarried">Unmarried</option>
+            <option value="Husband">Husband</option>
+            <option value="Not-in-family">Not-in-family</option>
+            <option value="Other-relative">Other-relative</option>
+            <option value="Own-child">Own-child</option>
+            <option value="Wife">Wife</option>
+        </select>
+        <br>
+        <label for="race">Race</label>
+        <select id="race" name="race">
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Amer-Indian-Eskimo">Native American</option>
+            <option value="Asian-Pac-Islander">Asian/Pacific Islander</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <label for="marital_status">Marital Status</label>
+        <select id="marital_status" name="marital_status">
+            <option value="Never-married">Never-married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Separated">Separated</option>
+            <option value="Widowed">Widowed</option>
+            <option value="Married-spouse-absent">Married-spouse-absent</option>
+            <option value="Married-AF-spouse">Married-AF-spouse</option>
+        </select>
+        <br>
+        <label for="sex" class = "mr-3">Sex</label>
+        <select id="sex" name="sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br>
+        <label for="native_country">Native Country</label>
+        <select id="native_country" name="native_country">
+            <option value="Cambodia">Cambodia</option>
+            <option value="Canada">Canada</option>
+            <option value="China">China</option>
+            <option value="Columbia">Columbia</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Dominican-Republic">Dominican Republic</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="El-Salvador">El Salvador</option>
+            <option value="England">England</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Haiti">Haiti</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Honduras">Honduras</option>
+            <option value="HongKong">HongKong</option>
+            <option value="Hungary">Hungary</option>
+            <option value="India">India</option>
+            <option value="Iran">Iran</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Italy">Italy</option>
+            <option value="Jamaica">Jamaica</option>
+            <option value="Japan">Japan</option>
+            <option value="Laos">Laos</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Outlying-US(Guam-USVI-etc)">Outlying-US(Guam-USVI-etc)</option>
+            <option value="Peru">Peru</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Puerto-Rico">Puerto-Rico</option>
+            <option value="Scotland">Scotland</option>
+            <option value="South">South</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Trinadad&Tobago">Trinadad&Tobago</option>
+            <option value="United-States">United States</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Yugoslavia">Yugoslavia</option>
+        </select>
+    </div>
+
+    <div class="section"><span>3</span>Financial Information</div>
+        <div class="inner-wrap">
+            <label for="capital_gain">Capital Gain </label>
+            <input type="text" id="capital_gain" name="capital_gain" placeholder="Numerical Input between 0 and 99999">
+            <br>
+            <label for="capital_loss">Capital Loss </label>
+            <input type="text" placeholder="Numerical Input between 0 and 4356" id="capital_loss" name="capital_loss">
+    </div>
+    <div class="button-section">
+     <input type="submit" name="Submit" />
+     <span class="privacy-policy">
+     <input type="checkbox" name="field7" id="field7">You agree to our Terms and Policy.
+     </span>
+    </div>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</body>
+</html>
