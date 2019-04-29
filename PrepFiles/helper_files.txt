@@ -1,0 +1,17 @@
+Helper Sites/Code:
+
+https://github.com/rmotr-curriculum/flask-heroku-example - Used to help setup the backend with Flask and Heroku.
+
+https://www.sanwebe.com/2014/08/css-html-forms-designs - Used as a form template for the front end.
+
+Libraries used:
+
+Pandas
+Flask
+NumPy
+Scikit-Learn
+Scikit-Learn.externals
+
+
+
+
