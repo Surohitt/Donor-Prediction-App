@@ -7,7 +7,7 @@
 -*Application GUI*
 
 
-This application was designed with motivation from [Keela] (https://www.keela.co/. The appplication itself can be found [here](https://income-classifier.herokuapp.com/).
+This application was designed with motivation from [Keela](https://www.keela.co/). The appplication itself can be found [here](https://income-classifier.herokuapp.com/).
 
 This repo contains some sample code to deploy a simple (but complete) Flask application to [Heroku](https://heroku.com). The deployed app counts with the following features:
 
