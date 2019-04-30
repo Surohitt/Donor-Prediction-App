@@ -1,6 +1,11 @@
 # Donor Prediction App
 
+![](assets/notebook_workflow.gif)
+-*Notebook Workflow*
+
 ![](assets/Donor.gif)
+*Application GUI*
+
 
 This application was designed with motivation from [Keela] (https://www.keela.co/. The appplication itself can be found [here](https://income-classifier.herokuapp.com/).
 
@@ -75,6 +80,7 @@ The PrepFiles folder consists of two main notebooks.
 
 - **KeelaDonorProject.ipynb**: is a walkthrough of the EDA, data cleaning and model preparation/creation process. I highly recommend reviewing this portion as a data scientist/machine learning engineer.
 - **Helper Functions.ipynb**: is a notebook consisting of several functions that were later implemented in the live application. This notebook was used to test function in an agile fashion.
+- It is also important to note the **helper_files.txt**. This file includes a list of resources that were used during the development of this application.
 
 #### Application
 The other folders are reasonably self explanatory. The **procfile, requirements**, and **runtime** files simply indicate to heroku how to execute the application.
