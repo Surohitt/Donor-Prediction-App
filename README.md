@@ -2,7 +2,7 @@
 
 ![](assets/Donor.gif)
 
-_(This application was designed with motivation from [Keela] (https://www.keela.co/))_
+This application was designed with motivation from [Keela] (https://www.keela.co/. The appplication itself can be found [here](https://income-classifier.herokuapp.com/).
 
 This repo contains some sample code to deploy a simple (but complete) Flask application to [Heroku](https://heroku.com). The deployed app counts with the following features:
 
@@ -39,7 +39,7 @@ $ heroku create
 
 ##### 4. Set the Python Path
 ```bash
-$ heroku config:set PYTHONPATH=flask_heroku_example
+$ heroku config:set PYTHONPATH=KeelaApp
 ```
 
 ##### 5. Deploy & Profit
@@ -62,7 +62,7 @@ $ python KeelaApp/main.py
 
 # Project Motivation <a name='Motivation'></a>
 
-This project was offered by [Keela](https://www.keela.co/).
+This project was offered by [Keela](https://www.keela.co/) as .
 
 This project attempts to classify individuals income bracket (<50,000 and >50,000 USD) to a high degree of accuracy. With the hope of helping non profits and charities save time identifying donors. A project like this has the potential to seriously impact the status quo of donor identification.
 
