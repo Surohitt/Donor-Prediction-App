@@ -4,7 +4,7 @@
 -*Notebook Workflow*
 
 ![](assets/Donor.gif)
-*Application GUI*
+-*Application GUI*
 
 
 This application was designed with motivation from [Keela] (https://www.keela.co/. The appplication itself can be found [here](https://income-classifier.herokuapp.com/).
