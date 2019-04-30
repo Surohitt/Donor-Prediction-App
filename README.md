@@ -9,7 +9,7 @@
 
 This application was designed with motivation from [Keela](https://www.keela.co/). The appplication itself can be found [here](https://income-classifier.herokuapp.com/).
 
-This repo contains some sample code to deploy a simple (but complete) Flask application to [Heroku](https://heroku.com). The deployed app counts with the following features:
+This repo contains all the code used to deploy a [Flask](http://flask.pocoo.org/) application to [Heroku](https://heroku.com). The deployed app counts with the following features:
 
 * Running Python 3.6 🐍
 * Static Files management with [WhiteNoise](http://whitenoise.evans.io/en/stable/) 🔌
@@ -67,8 +67,6 @@ $ python KeelaApp/main.py
 
 # Project Motivation <a name='Motivation'></a>
 
-This project was offered by [Keela](https://www.keela.co/) as .
-
 This project attempts to classify individuals income bracket (<50,000 and >50,000 USD) to a high degree of accuracy. With the hope of helping non profits and charities save time identifying donors. A project like this has the potential to seriously impact the status quo of donor identification.
 
 Also, I want to encourage pull requests and further analysis on top of this project! I would love to see what the open source community could contribute to a project like this.
@@ -90,11 +88,11 @@ The **KeelaApp** folder contains the meat of this project. However, for simplici
 
 # Results <a name='Results'></a>
 
-With a final accuracy of 86% and F-score of ~52% its clear that the model seems to overfit. I believe this can be attributed to the fact that the majority of the data consists of individuals who receive an income of less than 50,000 and therefore the model naively assumes this to be true in practice.
+With a final accuracy of 86% and F-score of ~52% its clear that the model seems to overfit. I believe this can be attributed to the fact that the majority of the data consists of individuals who receive an income of less than 50,000 and therefore the model naively assumes this to be true in most cases.
 
 Expanding the original dataset past the original ~ 45,000 rows with a more evenly distributed predictor variable will do wonders for our model development. This is further compounded with the Cross Validator which may be training some of the models on extremely sparse sets of positive predictor outcomes.
 
 
 # Acknowledgements <a name='Acknowledgements'></a>
 
-Thanks must go to [UCI](https://archive.ics.uci.edu/ml/datasets/Adult) for creating this data set using census data from 1996.
+Acknowledgements must go to [UCI](https://archive.ics.uci.edu/ml/datasets/Adult) for creating this data set using census data from 1996 and for Keela setting up this mini project/challenge. 
